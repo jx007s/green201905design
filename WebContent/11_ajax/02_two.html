@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>02_two</title>
+<style>
+#cons{
+	position:absolute;
+	left:100px;
+	top:100px;
+	border:1px solid #000;
+	width: 200px;
+	height: 300px;
+	overflow: hidden;
+}
+.big > img{
+	width: 200px;
+	height: 250px;
+	display: block;
+	float: left;
+}
+.big{
+	position:absolute;
+	top:0px;
+}
+.jump{
+	position:absolute;
+	left:75px;
+	top:250px;
+	border-radius:25px;
+	width: 50px;
+	height: 50px;
+	background-color: rgba(0,0,0,0.5);
+	color: #fff;
+	line-height: 50px;
+	font-size: 40px;
+	text-align: center;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.jump:nth-child(2){
+	
+	left:275px;
+	
+}
+
+.goStop{
+	position:absolute;
+	left:250px;
+	top:380px;
+	border-radius:5px;
+	width: 20px;
+	height: 20px;
+	background-color: rgba(0,0,0,0.5);
+	color: #fff;
+	line-height: 20px;
+	font-size: 13px;
+	text-align: center;
+	cursor: pointer;
+	z-index: 1;
+}
+.direct{
+	position:absolute;
+	left:275px;
+	top:380px;
+	border-radius:5px;
+	width: 20px;
+	height: 20px;
+	background-color: rgba(0,0,0,0.5);
+	color: #fff;
+	line-height: 20px;
+	font-size: 13px;
+	text-align: center;
+	cursor: pointer;
+	z-index: 1;
+}
+
+</style>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+
+
+$(document).ready(function(){
+	var ch =1;
+	var anim = false;
+	
+	
+	dataGet("gall1.html")
+	
+	$('#cons').on({
+		'mouseover':function(){
+			clearInterval(go);
+		},
+		'mouseout':function(){
+			gallMoveStart()
+			
+		},
+	});
+	
+	
+	$('.jump').on({
+		'mouseover':function(){
+			clearInterval(go);
+		},
+		'mouseout':function(){
+			gallMoveStart()
+		},
+		'click':function(){
+			if(!anim){
+				var buf = eval($(this).attr('dd'))
+				gall_module(cnt+buf)
+			}
+		}
+	});
+	
+	
+	$('.goStop').on({
+		'click':function(){
+			
+			var hh = $(this).html();
+			
+			if(hh=='||'){
+				clearInterval(go);
+				
+				gallMoveOk = false;
+				$(this).html('▶');
+			}
+			else{
+				gallMoveOk = true;
+				gallMoveStart()
+				$(this).html('||');
+			}
+		}
+	});
+	
+	
+	$('.direct').on({
+		'click':function(){
+			
+			var hh = $(this).html();
+			
+			//console.log("direct 진입"+hh);
+			
+			if(hh=='&gt;&gt;'){  /// '&gt;&gt;' 가 >> 모양
+				ch=1
+				$(this).html('<<');
+			}
+			else{
+				ch=-1
+				$(this).html('>>');
+			}
+		}
+	});
+	
+	
+	$('.btn').on({
+		'click':function(){
+			dataGet("gall"+$(this).val()+".html")
+		}
+	});
+	var go='';
+	
+	
+	function dataGet(url){
+		$.ajax(url,
+			{
+				success:function(dd){
+					
+					if(go)
+						clearInterval(go);
+
+					$("#cons").html(dd);
+					$(".big").append($('<img src="'+$(".big > img").eq(0).attr('src')+'" alt="" />'));
+
+					tot = $(".big > img").length
+						
+					console.log(tot);
+					cnt =0;
+					
+					$('.big').css({
+						'width':tot*200+"px",
+						'left':'0px'
+						})
+						
+					gallMoveOk = true;	
+					gallMoveStart()
+	
+				},
+				error:function(){
+					alert("실패다 실패");
+				},
+			}
+		);
+	}
+	
+	
+	function gallMoveStart(){
+		if(gallMoveOk)
+			go = setInterval(gallMove, 2000);
+	}
+	
+	
+	function gall_module(no){
+		console.log("진입"+cnt);
+		cnt = no
+		if(cnt==tot){
+			$('.big').css({
+				'left':'0px'
+				})
+			
+			cnt=0;
+		}else if(cnt<0){
+			cnt=tot-1
+			$('.big').css({
+				'left':cnt*-200+'px'
+				})			
+			
+		}else{
+			anim = true;
+		$('.big').stop().animate({
+			'left':cnt*-200+'px'
+			},500, function(){
+				anim = false
+			})	
+		}
+	}
+	
+	function gallMove(){
+		console.log(ch);
+		cnt+=ch;
+		gall_module(cnt);
+	}
+	
+
+});
+</script>
+</head>
+<body>
+<h2>02_two</h2>
+<div class="jump" dd="1"  >></div>
+<div class="jump" dd="-1" ><</div>
+<div class="goStop">||</div>
+<div class="direct"><<</div>
+<input type="button" class="btn" value="1" />
+<input type="button" class="btn" value="2" />
+<input type="button" class="btn" value="3" />
+<div id="cons"></div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>02_piano</title>
+<style>
+div{
+	width: 50px;
+	height: 50px;
+	
+}
+
+
+</style>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('div').on({
+		'mouseover':function(){
+			$(this).stop().animate({'width':'300px'},500)
+		},
+		'mouseout':function(){
+			$(this).stop().animate({'width':'50px'},500)
+		}
+		
+	});
+});
+</script>
+</head>
+<body>
+<h1>02_piano</h1>
+<div style="background: #f00;"></div>
+<div style="background: #fa0;"></div>
+<div style="background: #ff0;"></div>
+<div style="background: #0f0;"></div>
+<div style="background: #00f;"></div>
+<div style="background: #30a;"></div>
+<div style="background: #f0f;"></div>
+</body>
+</html>

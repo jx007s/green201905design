@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>01_src</title>
+</head>
+<body>
+<h1>01_src</h1>
+<style>
+
+</style>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="01_sss.js"></script>
+<input type="button" onclick="btnGo()" value="눌러바" />
+<div id="aaa"></div>
+<div id="bbb"></div>
+<script>
+var aaa = document.getElementById("aaa");
+aaa.innerHTML = '배고프다요';
+$('#bbb').html('나도 고프다요');
+
+var arr = {
+		'background-color': '#ff0',
+		'width': '200px',
+		'height': '100px'
+	};
+
+$('#bbb').css(arr);
+
+</script>
+
+</body>
+</html>

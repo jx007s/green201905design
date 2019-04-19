@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>04_keyArray</title>
+</head>
+<body>
+<h1>04_keyArray</h1>
+<script>
+    var arr1 = {red:'빨강', yellow:'노랑',green:'녹색'}
+    arr1['blue'] = '파랑'
+    arr1.yellow = '노랭이'
+
+    //document.write(arr1);
+
+    delete arr1['red']
+
+    document.write(arr1['red']+"<br>");
+    document.write(arr1.yellow+"<br>");
+    var kk = 'green'
+    document.write(arr1[kk]+"<br>");
+    document.write(arr1.blue+"<br>");
+
+    //var arr2 = [];
+    //var arr2 = new Object();
+    var arr2 = new Array();
+    arr2['coffee'] = 3000
+    arr2['hongTea'] = 4500
+    arr2['greenTea'] = 2500
+
+    document.write(arr2.coffee+"<br>");
+    document.write(arr2.hongTea+"<br>");
+    document.write(arr2.greenTea+"<br>");
+    document.write("-----------------<br>");
+
+    for (key in arr2) {
+        document.write(key+":"+arr2[key]+"<br>");
+    }
+
+
+
+</script>
+</body>
+</html>

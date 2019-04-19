@@ -1,0 +1,31 @@
+@charset "UTF-8";
+#pacman{  /* 화면 정중앙 위치   */
+	width:40px;/* 30~120   */
+	height: 40px;/* 30~120   */
+	/* border-radius: 25px; */
+	position: absolute;
+	/* background: #ff0; */
+	background-image: url('pacman/pacman.png');
+}
+.enermy{/* 1/4 위치   */
+	width:40px;  /* 30~120   */
+	height: 40px;/* 30~120   */
+	position: absolute;
+	/* background: #f00; */
+	background-image: url('pacman/monster.png');
+	
+	/* box-shadow:inset 1px 0px 0px #000,
+	inset -1px 0px 0px #000,
+	inset 0px -1px 0px #000,
+	inset 0px 1px 0px #000;  */
+}
+#area{
+	position:absolute;
+	width: 800px;/* 400~800   */
+	height: 500px;/* 300~600   */
+	border: 1px solid #000;
+	background-image: url('pacman/bg.jpg');
+	top:20px;
+	left: 100px;
+	overflow: hidden;
+}

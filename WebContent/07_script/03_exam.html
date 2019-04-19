@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <h1>03_exam</h1>
+    <script>
+    /// 과목 5개 사람 4명 총점, 평균, 등급, 등수
+    var index =  ['이름','국어','영어','수학','총점','평균','등급','등수']
+
+        var exam =[ 
+           
+            ['장동건',77,79,71],
+            ['장서건',57,59,51],
+            ['장남건',97,99,91],
+            ['장중건',67,69,61]
+    ]
+
+    for(k in exam){
+        
+        var sum =0;
+        for (i in exam[k]) {
+            if (i==0) continue
+                
+            sum += exam[k][i];
+        }
+
+        var avg = sum / (exam[k].length-1)
+        var grade = ['가','가','가','가','가','가','양','미','우','수','수','수'][Math.floor(avg/10)]
+
+        exam[k].push(sum)
+        exam[k].push(avg)
+        exam[k].push(grade)
+    }
+
+    for (const me in exam) {
+        var rank = 1;
+        for (const you in exam) {
+            if (exam[me][5]<exam[you][5]) {
+                rank++;
+                
+            }
+        }
+        exam[me].push(rank);
+    }
+
+
+
+
+
+</script>    
+
+<table border="">
+	
+
+<script>
+     var res = '<tr>'
+    for (const i in index) {
+         res += '<td>'+index[i]+"</td>";
+    }
+
+    res += "</tr>";
+
+    document.write(res);
+
+
+    for(r in exam){
+        for(k in exam){
+
+            if(r== exam[k][7]-1)
+           {
+                var res = '<tr>'
+                
+                for (i in exam[k]) {
+                        
+                    res += '<td>'+exam[k][i]+"</td>";
+                }
+        
+                res += "</tr>";
+
+                document.write(res);
+            }
+        }
+    }
+
+    </script>
+
+</table>    
+</body>
+</html>

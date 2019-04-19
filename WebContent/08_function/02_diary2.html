@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>02_diary</title>
+<link href="https://fonts.googleapis.com/css?family=Germania+One|Roboto+Slab" rel="stylesheet">
+<style>
+img{
+     width:200px;
+     height: 160px;
+}
+.mm{
+    font-family: 'Germania One', cursive;
+    font-size: 40px;
+}
+.sun{
+    color: #f00;
+}
+.work{
+    color: #000;
+}
+.sat{
+    color: #00f;
+}
+
+</style>
+</head>
+<body>
+<h1>02_diary</h1>
+
+<script>
+var first =(yy,mm)=>{
+
+    var dd = new Date(yy, mm, 1).getDay();
+
+
+    var res = '<tr align="right">';
+
+    if(dd){
+        res += '<td colspan='+dd+'></td>';
+    }
+
+    return res;
+}
+
+var ddd = (yy,mm,dd)=>{
+
+    var no =new Date(yy, mm, dd).getDay();
+
+    var cla = ['sun','work','work','work','work','work','sat'][no];
+
+    var res ='<td class='+cla+'>'+dd+'</td>';
+    
+    
+    if(no==6)
+        res+= '</tr><tr align="right">';
+    
+    return res;
+}
+
+
+var month = (yy,mm) =>{
+
+    
+
+    var res = '<table border="" cellpadding="3"><tr align="center"><td colspan="7"><img src="img/'+mm+'.jpg"></td></tr>';
+    
+    
+    res+='<tr align="center"><td colspan="7" class="mm">'+(mm+1)+' 월</td></tr>';
+
+
+    res+=first(yy,mm);
+
+    var last = new Date(yy, mm+1, 0).getDate();
+
+    for (let index = 1; index <=last; index++) {
+        res+=ddd(yy,mm,index);
+        
+    }
+
+
+    res+='</tr></table>';
+
+    return res;
+
+}
+var diary = (yy, line)=>{
+    
+    document.write('<table border="">');
+    for (var big = 0; big < 12; big+=line) {
+         document.write('<tr>');
+        for (var index = big; index < big+line; index++) {
+            var res = '<td valign="top">'+month(yy,index)+'</td>';
+
+            document.write(res);
+            
+        }
+         document.write('</tr>');       
+    }
+    document.write('</table>');
+   
+}
+
+diary(2019, 3);
+
+</script>
+
+
+		
+	
+
+</body>
+</html>

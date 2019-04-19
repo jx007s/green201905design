@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.thumb{
+	width : 20px;
+	height: 20px;
+	border: 1px solid #000;
+	padding : 10px;
+	float: left;
+	
+}
+.thumb > img
+{
+	width : 20px;
+	height: 20px;	
+}
+
+
+.big{
+	position:absolute;
+	top:200px;
+	width : 200px;
+	height: 200px;
+	border: 1px solid #000;
+	padding : 10px;	
+}
+.bigImg
+{
+	position:absolute;
+	top:0px;
+	width : 200px;
+	height: 200px;	
+	display: none;
+}
+.bigImg > img
+{
+	width : 200px;
+	height: 200px;	
+}
+</style>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+
+
+$(document).ready(function(){
+	console.log($('div').eq(1).html());
+	
+	
+	$('.thumb').each(function(index){
+		
+		$(this).css({backgroundColor:$(this).attr('bg')})
+		
+		$(this).on({
+				'click':function(){
+		
+					$('.bigImg').css({display:'none'});  //전체 적용 - 안보이게
+					$('.bigImg').eq(index).css({display:'inline'});///특정객체 적용-보이게
+				}
+		});
+	});
+	
+	
+});
+</script>
+</head>
+<body>
+<h1>01_indexEq</h1>
+<div class="thumb" bg="#f00"><img alt="" src="../fff/gaek2.png"></div>
+<div class="thumb" bg="#fa3"><img alt="" src="../fff/gaeko.png"></div>
+<div class="thumb" bg="#ff0"><img alt="" src="../fff/load.png"></div>
+<div class="thumb" bg="#0f0"><img alt="" src="../fff/nate.jpg"></div>
+<div class="thumb" bg="#00f"><img alt="" src="../fff/naver.jpg"></div>
+
+
+<div class="big"></div>
+</body>
+</html>

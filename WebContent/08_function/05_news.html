@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>05_news</title>
+<style>
+.news{
+    position: absolute;
+    left: 10px;
+    top: 120px;
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    display: none;
+}
+</style>
+<script>
+var no =0;
+
+    function newsGo(num){
+
+        for (let index = 0; index <3; index++) {
+            var sport = document.getElementById("news_"+index);
+            sport.style.display="none";
+        }
+
+        var sport = document.getElementById("news_"+no);
+        sport.style.display="inline";
+        no+=num;
+        no%=3;
+
+        if(no<0)
+        no=2;
+
+    }
+
+    var tt = setInterval(newsGo(1), 2000)
+
+</script>
+</head>
+<body>
+<input type="button" onclick="newsGo(-1)" value="<<"/>
+<input type="button" onclick="newsGo(1)" value=">>"/>
+<h1>05_news</h1>
+<div class="news" id="news_0">
+    <h4>스포츠</h4>
+추신수 트리플 악셀 성공<br>
+서장훈 장외만루 홈런 터저<br>
+김연아 3점 버저비터 성공<br>
+</div>
+<div class="news"  id="news_1">
+    <h4>정치</h4>
+트리플 악셀 성공<br>
+wfeewfef 장외만루 홈런 터저<br>
+wfewefwefwef 3점 버저비터 성공<br>
+</div>
+<div class="news"  id="news_2">
+    <h4>경제</h4>
+농장 장트리플 악셀 성공<br>
+공장 장외만루 홈런 터저<br>
+서비스 3점 버저비터 성공<br>
+</div>
+</body>
+</html>

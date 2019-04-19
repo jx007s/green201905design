@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>02_two</title>
+<style>
+#cons{
+	position:absolute;
+	left:100px;
+	top:100px;
+	border:1px solid #000;
+	width: 200px;
+	height: 300px;
+	overflow: hidden;
+}
+.big > img{
+	width: 200px;
+	height: 250px;
+	display: block;
+	float: left;
+}
+.big{
+	position:absolute;
+	top:0px;
+}
+
+
+</style>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+	$('.btn').on({
+		'click':function(){
+			dataGet("gall"+$(this).val()+".html")
+		}
+	});
+	var go='';
+	
+	function dataGet(url){
+		$.ajax(url,
+			{
+				success:function(dd){
+					
+					if(go)
+						clearInterval(go);
+
+					$("#cons").html(dd);
+					console.log($(".big > img").length)
+					tot = $(".big > img").length
+										
+					cnt =0;
+					
+					$('.big').css({
+						'width':tot*200+"px",
+						'left':'0px'
+						})
+						
+					go = setInterval(gallMove, 2000);
+	
+				},
+				error:function(){
+					alert("실패다 실패");
+				},
+			}
+		);
+	}
+	
+	function gallMove(){
+		cnt++;
+		if(cnt==tot)
+			cnt=0;
+		
+		$('.big').css({
+			'left':cnt*-200+'px'
+			})
+	}
+	
+	
+	
+});
+</script>
+</head>
+<body>
+<h2>02_two</h2>
+<input type="button" class="btn" value="1" />
+<input type="button" class="btn" value="2" />
+<input type="button" class="btn" value="3" />
+<div id="cons"></div>
+</body>
+</html>

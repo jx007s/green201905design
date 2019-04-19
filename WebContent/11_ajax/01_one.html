@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>01_one</title>
+<style>
+#cons{
+	border:1px solid #000;
+	padding:10px;
+}
+
+</style>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	$.ajax('data1.html',
+		{
+			success:function(dd){
+				alert("와 성공");
+				$("#cons").html(dd);
+			},
+			error:function(){
+				alert("실패다 실패");
+			},
+		}
+	);
+});
+</script>
+</head>
+<body>
+<h2>01_one</h2>
+<input type="button" class="btn" value="1" />
+<input type="button" class="btn" value="2" />
+<input type="button" class="btn" value="3" />
+<div id="cons"></div>
+</body>
+</html>

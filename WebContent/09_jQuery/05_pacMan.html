@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>05_pacMan</title>
+<style>
+#pacman{  /* 화면 정중앙 위치   */
+	width:50px;/* 30~120   */
+	height: 50px;/* 30~120   */
+	border-radius: 25px;
+	position: absolute;
+	background: #ff0;
+}
+.enermy{/* 1/4 위치   */
+	width:50px;  /* 30~120   */
+	height: 50px;/* 30~120   */
+	position: absolute;
+	background: #f00;
+	box-shadow:inset 1px 0px 0px #000,
+	inset -1px 0px 0px #000,
+	inset 0px -1px 0px #000,
+	inset 0px 1px 0px #000; 
+}
+#area{
+	position:absolute;
+	width: 600px;/* 400~800   */
+	height: 600px;/* 300~600   */
+	border: 1px solid #000;
+	top:20px;
+	left: 100px;
+	overflow: hidden;
+}
+
+
+</style>
+<script src="../js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div id="area">
+	<div id="en0" class="enermy"></div>
+	<div id="en1" class="enermy"></div>
+	<div id="en2" class="enermy"></div>
+	<div id="en3" class="enermy"></div>
+	<div id="en4" class="enermy"></div>
+	<div id="en5" class="enermy"></div>
+	
+	<div id="pacman"></div>
+</div>
+<script type="text/javascript">
+
+function init(cnt){
+	var res =[];
+
+	for(var i =0; i<cnt ; i++){
+		var buf = {};
+		
+		//:100, :500, :8, :3
+		buf['emeLocX'] = Math.random()*400+100;
+		buf['emeLocY'] = Math.random()*100+400;
+		buf['emeX'] = (Math.random()*5+3)*[-1,1][Math.floor(Math.random()*2)];
+		buf['emeY'] = (Math.random()*5+3)**[-1,1][Math.floor(Math.random()*2)];
+		
+		res[i] = buf;
+	}
+	
+	return res;
+}
+
+var pacX=300, pacY=300;
+
+var em = init(6);
+/* [
+	{'emeLocX':100, 'emeLocY':500, 'emeX':8, 'emeY':3},
+	{'emeLocX':200, 'emeLocY':500, 'emeX':4, 'emeY':7},
+	{'emeLocX':300, 'emeLocY':500, 'emeX':6, 'emeY':5},
+	{'emeLocX':400, 'emeLocY':500, 'emeX':5, 'emeY':6},
+	{'emeLocX':500, 'emeLocY':400, 'emeX':-5, 'emeY':5},
+	{'emeLocX':320, 'emeLocY':500, 'emeX':5, 'emeY':-5}]; */
+
+
+pacMove();
+
+function emeMove(){
+	
+	
+	for(var i =0 ; i<em.length; i++){
+		
+		em[i].emeLocX+=em[i].emeX;
+		em[i].emeLocY+=em[i].emeY;
+		if(em[i].emeLocX<0 || em[i].emeLocX+50>600)
+			em[i].emeX*=-1;
+		
+		if(em[i].emeLocY<0 || em[i].emeLocY+50>600)
+			em[i].emeY*=-1;
+		
+		
+		$('#en'+i).css({
+			'left':em[i].emeLocX+'px'
+			,'top':em[i].emeLocY+'px'
+		})
+	}
+	
+	kissChk();
+	
+}
+
+
+function kissChk(){
+	for(i in em){
+		
+		if(pacX+50 > em[i].emeLocX && pacX < em[i].emeLocX+50 &&
+				pacY+50 > em[i].emeLocY && pacY < em[i].emeLocY+50){
+			alert("게임오버");
+			clearInterval(emeChk);
+			break;
+		}
+	}
+}
+
+
+var emeChk = setInterval(emeMove, 50);
+
+
+function pacMove(){
+	
+	if(pacX<0)
+		pacX=0;
+	if(pacX+50>600)
+		pacX=600-50;
+	if(pacY<0)
+		pacY=0;
+	if(pacY+50>600)
+		pacY=600-50;
+	
+	$('#pacman').css({
+		'left':pacX+'px',
+		'top':pacY+'px'
+	})
+}
+
+$('body').on({
+		keydown:function(event){
+			
+			switch(event.keyCode){
+				case 37:
+					pacX -=10;
+					break;
+				case 39:
+					pacX +=10;
+					break;
+				case 38:
+					pacY -=10;
+					break;
+				case 40:
+					pacY +=10;
+					break;
+					
+			}
+
+			pacMove();			
+		}	
+});
+</script>
+</body>
+</html>

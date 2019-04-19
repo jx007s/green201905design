@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>01_func</title>
+</head>
+<body>
+<h2>01_func</h2>
+<script>
+function fn_1(){
+    document.write("fn_1() 시작<br>");
+    fn_2();
+    document.write("fn_1() 끝<br>");
+}
+var fn_2 = function (){
+    document.write("fn_2() 시작<br>");
+    fn_3();
+    document.write("fn_2() 끝<br>");
+}
+
+var fn_3 =() => {
+    document.write("fn_3() 시작<br>");
+    document.write("fn_3() 끝<br>");
+}
+
+fn_1();
+
+var arr = [fn_1, fn_2, fn_3]
+
+document.write("------------------<br>");
+
+arr[0]();
+
+var d = 40; //지역변수 ---> SCOPE  즉 영역이 포함부분 여부
+
+var fn_4 = (a,b) =>{
+    var c = 30; //지역변수
+    e = 50;     //전역변수
+
+    document.write("fn_4() 실행"+(a+b+c+d+e)+"<br>");
+
+    e = 123;
+}
+
+var fn_5 = (a,b) =>{
+
+    document.write("fn_5() 실행"+(a+b+d+e)+"<br>");
+}
+
+
+fn_4(10,20);
+fn_5(10,20);
+
+</script>
+</body>
+</html>

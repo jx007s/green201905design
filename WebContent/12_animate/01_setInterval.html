@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+#box{
+	position: absolute;
+	left: 10px;
+	top: 100px;
+	background: #ff0;
+	border: 1px solid #000;
+	width: 50px;
+	height: 50px;
+}
+
+#box2{
+	position: absolute;
+	left: 100px;
+	top: 100px;
+	background: #f00;
+	border: 1px solid #000;
+	width: 50px;
+	height: 50px;
+}
+
+#cons{
+	border:1px solid #000;
+	padding:10px;
+}
+</style>
+<title>01_setInterval</title>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
+<script>
+$(document).ready(function(){
+	var chk = setInterval(boxMove, 50);
+	//$("#box2").css({'top':'300px'})
+	//$("#box2").animate({'top':'300px'},1000)
+	//$("#box2").animate({'top':'400px','left':'400px'},1000,'easeOutBounce')
+	$("#box2").animate({'top':'400px'},1000)
+	.animate({'left':'400px'},1000)
+	.animate({'height':'200px'},1000)
+	.animate({'background-color':'#00f'},1000,function(){
+		$("#cons").html("와 애니메이션 끝이다")
+	})
+	//.animate({transform:'rotate(45deg)'},1000);
+	
+	var ll = 10;
+	function boxMove(){
+		
+		if(ll>=400){
+			clearInterval(chk)
+			chk2 = setInterval(boxMove2, 50);
+		}
+		
+		ll+=10;
+		$("#box").css({'left':ll+"px"})
+	}
+	
+	var tt = 100;
+	
+	function boxMove2(){
+		
+		if(tt>=300)
+			clearInterval(chk2)
+		
+		tt+=10;
+		$("#box").css({'top':tt+"px"})
+	}
+	
+});
+</script>
+</head>
+<body>
+<h1>01_setInterval</h1>
+<div id="cons"></div>
+<div id="box"></div>
+<div id="box2"></div>
+</body>
+</html>

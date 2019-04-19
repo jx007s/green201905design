@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>07_dom2</title>
+<style>
+#nodes{
+    border: 1px solid #000;
+    padding : 20px;
+}
+.child{
+    width: 50px;
+    height: 30px;
+    margin: 10px;
+    background: #ff0;
+}
+</style>
+</head>
+<body>
+<h1>07_dom2</h1>
+<input type="button" onclick="addNode()" value="+">
+<input type="button" onclick="removeNode()" value="-">
+<input type="text" id="num">
+<div id="nodes"></div>
+
+<script>
+var nodes = document.getElementById("nodes");
+var no=0;
+function addNode(){
+    var newChild = document.createElement("div");
+
+    newChild.setAttribute("class","child");
+    newChild.setAttribute("id","child_"+no);
+
+    newChild.innerHTML=no+"";
+
+    nodes.appendChild(newChild);
+
+    no++;
+}
+
+function removeNode(){
+    var delNo = eval(document.getElementById("num").value);
+
+    var delChild = document.getElementById("child_"+delNo);
+
+    delChild.parentNode.removeChild(delChild);
+}
+
+
+</script>
+
+</body>
+</html>

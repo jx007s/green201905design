@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>04_time</title>
+</head>
+<body>
+<h1>04_time</h1>
+
+<script>
+function aaa(){
+    alert('와 3초 지났다');
+}
+//setTimeout(aaa, 3000);
+
+var abc = setInterval(aaa,3000);
+
+function bbb(){
+    alert('bbb 눌렀냐?')
+    clearInterval(abc)
+}
+
+</script>
+
+<input type="button" value="멈춰" onclick="bbb()" />
+</body>
+</html>

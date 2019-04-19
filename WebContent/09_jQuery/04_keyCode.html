@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+#cons{
+	position:absolute;
+	width: 300px;
+	height: 50px;
+	border: 1px solid #000;
+	top:400px;
+}
+
+
+</style>
+<script src="../js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div id="cons"></div>
+<script type="text/javascript">
+function loggg(str){
+	$('#cons').html($('#cons').html()+str+"<br>");
+}
+$('body').on({
+		keyup:function(event){
+				
+			loggg('누름:'+event.keyCode);
+		}
+		
+});
+</script>
+</body>
+</html>

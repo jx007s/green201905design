@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>04_baloon</title>
+<style>
+	.oneView{
+		position: absolute;
+		width:160px;
+		height:250px;
+		overflow: auto;
+		left: 50%;
+		margin-left: -80px;
+	}
+	.oneTotal{
+		position: relative;
+		width:650px;
+		height:200px;
+	}
+	.one{
+		position: relative;
+		width:160px;
+		height:200px;
+		border: 1px solid #000;
+		float: left;
+	}
+	.balImg{
+		position: absolute;
+		width:160px;
+		height:180px;
+		left:0px;
+		top: 0px;
+		opacity: 0.5;
+	}
+	
+	.balImg:hover{
+		opacity: 1;
+	}
+	
+	.balTxt{
+		position: absolute;
+		left:0px;
+		bottom: 0px;
+		opacity: 0.5;
+	}
+
+</style>
+</head>
+<body>
+<h1>04_baloon</h1>
+<div class="oneView">
+	<div class="oneTotal">
+		<div class="one">
+			<div class="balImg">
+				<img src="baloon/01.png" alt="" />
+			</div>
+			<div class="balTxt">
+				첫번째 풍선입니다.
+			</div>
+		</div>
+		<div class="one">
+			<div class="balImg">
+				<img src="baloon/02.png" alt="" />
+			</div>
+			<div class="balTxt">
+				두번째 풍선입니다.
+			</div>
+		</div>
+		<div class="one">
+			<div class="balImg">
+				<img src="baloon/03.png" alt="" />
+			</div>
+			<div class="balTxt">
+				세번째 풍선입니다.
+			</div>
+		</div>
+		<div class="one">
+			<div class="balImg">
+				<img src="baloon/04.png" alt="" />
+			</div>
+			<div class="balTxt">
+				네번째 풍선입니다.
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

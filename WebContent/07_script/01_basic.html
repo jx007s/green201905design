@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>01_basic</title>
+<script>
+
+</script>
+</head>
+<body>
+<h1>01_basic</h1>
+<script>
+	document.write("나오나요<br>");
+	console.log("내가 syso 와 같지롱");
+	
+	var a = 10;
+	var b = 20;
+	document.write(a+b+"<br>");
+	var c = '문자열1';
+	var d = "문자열2";
+	
+	document.write(c+d+"<br>");
+	
+	alert('메세지 창이다');
+	
+	
+	var kor = 97, eng = 76, mat = 83;
+	
+	
+	
+	////총점, 평균, 등급 출력
+	var sum = kor+eng+mat;
+	var avg = sum /3;
+	var grade = 
+		avg  >= 90 ? '수' :
+		avg  >= 80 ? '우' :
+		avg  >= 70 ? '미' :
+		avg  >= 60 ? '양' :'가';
+		
+	//document.write("총점:"+sum+"<br>");
+	//document.write("평균:"+avg+"<br>");
+	//document.write("등급:"+grade+"<br>");
+	
+	var res = "<table border=''>"+
+	"<tr><td>총점</td><td>"+sum+"</td></tr>"+
+	"<tr><td>평균</td><td>"+avg+"</td></tr>"+
+	"<tr><td>등급</td><td>"+grade+"</td></tr>"+
+	"</table>";
+
+	document.write(res);
+	
+	var today = new Date();
+	
+	document.write(today+"<br>");
+	today.setYear(1990);
+	document.write(today+"<br>");
+	document.write(today.getMonth()+"<br>");
+	
+	for(var i=0; i<10; i++){
+		document.write(i+"<br>");
+	}
+
+</script>
+
+
+
+</body>
+</html>

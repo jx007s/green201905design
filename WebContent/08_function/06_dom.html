@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>06_dom</title>
+<style>
+#cons{
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+</style>
+
+</head>
+<body>
+<h1>06_dom</h1>
+
+<div id="a">div a</div>
+<div id="b">div b
+    <span class="ca">div b  안 span ca</span>
+
+
+</div>
+<span class="ca">span ca</span>
+<div id="c" class="ca">div c</div>
+
+<div id="cons" ></div>
+
+<script>
+var ddd = document.getElementsByTagName("div");
+
+loggg('ddd.length:'+ddd.length)
+
+loggg('ddd.item(2).innerHTML:'+ddd.item(2).innerHTML)
+
+var ca = document.getElementsByClassName("ca");
+
+loggg('ca.length:'+ca.length)
+loggg('ca.item(0).innerHTML:'+ca.item(0).innerHTML)
+
+ca.item(1).style.backgroundColor='#ff0';
+
+loggg('ca.item(2).getAttribute(\'id\'):'+ca.item(2).getAttribute('id'))
+
+ca.item(2).setAttribute('title', '김나현 입꼬리 위로')
+
+function loggg(str){
+    var cons = document.getElementById("cons");
+    cons.innerHTML+=str+"<br>";
+}
+
+</script>
+
+</body>
+</html>

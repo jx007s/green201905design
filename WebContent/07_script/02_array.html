@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>02_array</h1>
+<script>
+    var arr1 = ["빨강","파랑","노랑","주황","녹색"]
+
+    arr1.push("보라")
+
+    for(var i =0; i<arr1.length; i++){
+
+        document.write(arr1[i]+"<br>")
+    }
+
+    document.write("------------------------<br>")
+
+    var pp = arr1.pop()
+
+    document.write(pp+"--------------------<br>")
+
+    for(var i =0; i<arr1.length; i++){
+
+        document.write(arr1[i]+"<br>")
+    }
+
+    document.write("------------------------<br>")
+
+
+    var arr2 = [100, new Date(), "그린", 123.456, [11,22,33,44]]
+
+
+    for(k in arr2){
+         document.write(k+":"+arr2[k]+"<br>")
+    }
+
+
+    
+
+    
+
+</script>
+
+</body>
+</html>
